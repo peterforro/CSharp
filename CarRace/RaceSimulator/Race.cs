@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
 using CarRace.Vehicles;
 using CarRace.RaceWeather;
@@ -10,39 +9,39 @@ namespace CarRace.RaceSimulator {
 
     class Race {
 
-        private readonly List<Vehicle> vehicles;
-        private const int eachVehicleNumber = 10;
-        private const int raceHours = 50;
-        private readonly Weather weather;
+        private readonly List<Vehicle> _vehicles;
+        private const int EachVehicleNumber = 10;
+        private const int RaceHours = 50;
+        private readonly Weather _weather;
 
 
         public Race() {
-            weather = new Weather();
-            vehicles = new List<Vehicle>();
-            for (int i = 0; i < eachVehicleNumber; ++i) {
-                vehicles.Add(new Car(this));
+            _weather = new Weather();
+            _vehicles = new List<Vehicle>();
+            for (var i = 0; i < EachVehicleNumber; ++i) {
+                _vehicles.Add(new Car(this));
             }
-            for (int i = 0; i < eachVehicleNumber; ++i) {
-                vehicles.Add(new Motor(this));
+            for (var i = 0; i < EachVehicleNumber; ++i) {
+                _vehicles.Add(new Motor(this));
             }
-            for (int i = 0; i < eachVehicleNumber; ++i) {
-                vehicles.Add(new Truck(this));
+            for (var i = 0; i < EachVehicleNumber; ++i) {
+                _vehicles.Add(new Truck(this));
             }
         }
 
 
         public bool IsThereABrokenTruck() {
-            foreach (var vehicle in vehicles) {
-                if (vehicle is Truck && ((Truck) vehicle).BreakdownTurnsLeft > 0) return true;
+            foreach (var vehicle in _vehicles) {
+                if (vehicle is Truck truck && truck.BreakdownTurnsLeft > 0) return true;
             }
             return false;
         }
 
 
         public void SimulateRace() {
-            for (int i = 0; i < raceHours; ++i) {
-                weather.setRaining();
-                foreach (var vehicle in vehicles) {
+            for (var i = 0; i < RaceHours; ++i) {
+                _weather.SetRaining();
+                foreach (var vehicle in _vehicles) {
                     vehicle.MoveForAnHour();
                 }
             }
@@ -50,16 +49,26 @@ namespace CarRace.RaceSimulator {
 
 
         public override string ToString() {
-            StringBuilder sb = new StringBuilder();
-            foreach (var vehicle in vehicles ) {
-                sb.Append(vehicle + "\n");
+            var truck = new Truck(this);
+            var sb = new StringBuilder();
+            sb.Append("----------------------CARS----------------------\n");
+            foreach (var vehicle in _vehicles ) {
+                if(vehicle is Car) sb.Append(vehicle + "\n");
+            }
+            sb.Append("---------------------MOTORS---------------------\n");
+            foreach (var vehicle in _vehicles) {
+                if (vehicle is Motor) sb.Append(vehicle + "\n");
+            }
+            sb.Append("---------------------TRUCKS---------------------\n");
+            foreach (var vehicle in _vehicles) {
+                if (vehicle is Truck) sb.Append(vehicle + "\n");
             }
             return sb.ToString();
         }
 
 
-        public bool isRaining() {
-            return weather.Raining;
+        public bool IsRaining() {
+            return _weather.Raining;
         }
     }
 }

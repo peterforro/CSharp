@@ -8,7 +8,7 @@ namespace CarRace.Vehicles {
 
     class Truck : Vehicle {
 
-        private static int instanceCounter = 0;
+        private static int _instanceCounter;
 
         public int BreakdownTurnsLeft {
             set;
@@ -17,8 +17,8 @@ namespace CarRace.Vehicles {
 
         
         public Truck(Race race) : base(race) {
-            speed = 100.0;
-            name = "Truck " + (++instanceCounter);
+            Speed = 100.0;
+            Name = "Truck" + (++_instanceCounter);
         }
 
 
@@ -37,7 +37,7 @@ namespace CarRace.Vehicles {
         public override void MoveForAnHour() {
             PrepareForLap();
             if (BreakdownTurnsLeft == 0) {
-                distanceTraveled += speed;
+                DistanceTraveled += Speed;
             }
         }
     }

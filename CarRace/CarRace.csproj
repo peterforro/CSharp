@@ -49,7 +49,6 @@
     <Compile Include="RaceWeather\Weather.cs" />
     <Compile Include="Utility\Util.cs" />
     <Compile Include="Vehicles\Car.cs" />
-    <Compile Include="Vehicles\CarMotorMove.cs" />
     <Compile Include="Vehicles\Motor.cs" />
     <Compile Include="Vehicles\Truck.cs" />
     <Compile Include="Vehicles\Vehicle.cs" />

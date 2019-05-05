@@ -6,20 +6,20 @@ using CarRace.Utility;
 namespace CarRace.Vehicles {
 
 
-    class Motor : CarMotorMove {
+    class Motor : Vehicle {
 
 
-        private static int instanceCounter = 0;
+        private static int _instanceCounter;
         private const double normalSpeed = 100.0;
 
 
         public Motor(Race race) : base(race) {
-            name = "Motorcycle " + (++instanceCounter);
+            Name = "Motor" + (++_instanceCounter);
         }
 
 
         protected override void PrepareForLap() {
-            speed = race.isRaining() ? normalSpeed - Util.RandInt(5, 50) : normalSpeed;
+            Speed = Race.IsRaining() ? normalSpeed - Util.RandInt(5, 50) : normalSpeed;
         }
     }
 }

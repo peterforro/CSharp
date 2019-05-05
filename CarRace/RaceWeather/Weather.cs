@@ -12,7 +12,7 @@ namespace CarRace.RaceWeather {
             get;
         }
 
-        public void setRaining() {
+        public void SetRaining() {
             Raining = Util.RandInt(1, 100) <= 30;
         }
     }
