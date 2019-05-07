@@ -16,13 +16,25 @@ namespace LinkedList {
             //Console.WriteLine(list);
             //Console.ReadKey();
 
-            /*for (int i = 0; i < list.Size; ++i) {
+            /*
+             for (int i = 0; i < list.Size; ++i) {
                 list[i] = 100 + i;
-            }*/
-
-            foreach (var obj in list.getEach()) {
-                Console.WriteLine(obj);
             }
+            */
+
+            
+            /*
+             foreach (var obj in list.getEach()) {
+                Console.WriteLine(obj);
+            } 
+            */
+
+            var list2 = new LinkedList<int>();
+            list2.Add(7,8,9,10,11,12,13);
+
+            list += list2;
+            list += 6969;
+            Console.WriteLine(list);
 
             Console.ReadKey();
         }

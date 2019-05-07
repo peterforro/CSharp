@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Security.Policy;
 using System.Text;
 
 
@@ -155,6 +156,27 @@ namespace LinkedList.DoublyLinkedList {
                 yield return iter.data;
                 iter = iter.next;
             }
+        }
+
+
+        public static LinkedList<T> operator +(LinkedList<T> lhs, LinkedList<T> rhs) {
+            var result = new LinkedList<T>();
+            for (int i = 0; i < lhs.Size; ++i) {
+                result.Add(lhs[i]);
+            }
+            for (int i = 0; i < rhs.Size; ++i) {
+                result.Add(rhs[i]);
+            }
+            return result;
+        }
+
+        public static LinkedList<T> operator + (LinkedList<T> lhs, T obj) {
+            var result = new LinkedList<T>();
+            for (int i = 0; i < lhs.Size; ++i) {
+                result.Add(lhs[i]);
+            }
+            result.Add(obj);
+            return result;
         }
 
 
