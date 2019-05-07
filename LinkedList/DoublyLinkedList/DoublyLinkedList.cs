@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections;
-using System.Security.Policy;
+using System.Collections.Generic;
 using System.Text;
-
-
 
 namespace LinkedList.DoublyLinkedList {
 
 
-    class LinkedList<T> {
+    class LinkedList<T> : IEnumerable<T>, IEnumerator<T> {
 
 
         //NODE: listaelemek osztalya, talan lehetne struct is?! C++-ban tuti hogy struct-ot használtunk
@@ -32,6 +30,7 @@ namespace LinkedList.DoublyLinkedList {
         //SENTINEL: referencia valtozok, amik a lista elejere es vegere mutatnak
         private Node head;
         private Node tail;
+        private Node currentObj;
 
 
         //PROPERTY: az elemszam modositasahoz (classon belül) illetve lekerdezesehez
@@ -150,7 +149,7 @@ namespace LinkedList.DoublyLinkedList {
 
 
         //iterator method: foreach ciklus hasznalhatosagahoz
-        public IEnumerable getEach() {
+        public IEnumerable<T> GetEach() {
             var iter = head;
             while (iter != null) {
                 yield return iter.data;
@@ -170,6 +169,7 @@ namespace LinkedList.DoublyLinkedList {
             return result;
         }
 
+
         public static LinkedList<T> operator + (LinkedList<T> lhs, T obj) {
             var result = new LinkedList<T>();
             for (int i = 0; i < lhs.Size; ++i) {
@@ -184,9 +184,47 @@ namespace LinkedList.DoublyLinkedList {
         public override string ToString() {
             StringBuilder sb = new StringBuilder();
             for (Node iter = head; iter != null; iter = iter.next) {
-                sb.Append(iter.data.ToString() + " ");
+                sb.Append(iter.data + " ");
             }
             return sb.ToString();
+        }
+
+        //----------------------------------IENUMERATOR ES IENUMERABLE INTERFACE IMPLEMENTACIO----------------------------------
+        //----------------------------------------------------------------------------------------------------------------------
+        public IEnumerator<T> GetEnumerator() {
+            return this;
+        }
+
+
+        public void Dispose() {}
+
+
+        IEnumerator IEnumerable.GetEnumerator() {
+            return GetEnumerator();
+        }
+
+
+        public bool MoveNext() {
+            currentObj = currentObj == null ? head : currentObj.next;
+            return currentObj != null;
+        }
+
+
+        public void Reset() {
+            currentObj = null;
+        }
+
+
+        public T Current {
+            get => currentObj.data;
+        }
+
+        object IEnumerator.Current => Current;
+
+        public int CompareTo(LinkedList<T> other) {
+            if (ReferenceEquals(this, other)) return 0;
+            if (ReferenceEquals(null, other)) return 1;
+            return Size.CompareTo(other.Size);
         }
     }
 }

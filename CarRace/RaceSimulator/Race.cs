@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
 using System.Text;
 using CarRace.Vehicles;
 using CarRace.RaceWeather;
@@ -9,7 +10,7 @@ namespace CarRace.RaceSimulator {
 
     class Race {
 
-        private readonly List<Vehicle> _vehicles;
+        private readonly LinkedList<Vehicle> vehicles;
         private const int EachVehicleNumber = 10;
         private const int RaceHours = 50;
         private readonly Weather _weather;
@@ -17,21 +18,21 @@ namespace CarRace.RaceSimulator {
 
         public Race() {
             _weather = new Weather();
-            _vehicles = new List<Vehicle>();
+            vehicles = new LinkedList<Vehicle>();
             for (var i = 0; i < EachVehicleNumber; ++i) {
-                _vehicles.Add(new Car(this));
+                vehicles.Add(new Car(this));
             }
             for (var i = 0; i < EachVehicleNumber; ++i) {
-                _vehicles.Add(new Motor(this));
+                vehicles.Add(new Motor(this));
             }
             for (var i = 0; i < EachVehicleNumber; ++i) {
-                _vehicles.Add(new Truck(this));
+                vehicles.Add(new Truck(this));
             }
         }
 
 
         public bool IsThereABrokenTruck() {
-            foreach (var vehicle in _vehicles) {
+            foreach (var vehicle in vehicles) {
                 if (vehicle is Truck truck && truck.BreakdownTurnsLeft > 0) return true;
             }
             return false;
@@ -41,7 +42,7 @@ namespace CarRace.RaceSimulator {
         public void SimulateRace() {
             for (var i = 0; i < RaceHours; ++i) {
                 _weather.SetRaining();
-                foreach (var vehicle in _vehicles) {
+                foreach (var vehicle in vehicles) {
                     vehicle.MoveForAnHour();
                 }
             }
@@ -52,15 +53,15 @@ namespace CarRace.RaceSimulator {
             var truck = new Truck(this);
             var sb = new StringBuilder();
             sb.Append("----------------------CARS----------------------\n");
-            foreach (var vehicle in _vehicles ) {
+            foreach (var vehicle in vehicles ) {
                 if(vehicle is Car) sb.Append(vehicle + "\n");
             }
             sb.Append("---------------------MOTORS---------------------\n");
-            foreach (var vehicle in _vehicles) {
+            foreach (var vehicle in vehicles) {
                 if (vehicle is Motor) sb.Append(vehicle + "\n");
             }
             sb.Append("---------------------TRUCKS---------------------\n");
-            foreach (var vehicle in _vehicles) {
+            foreach (var vehicle in vehicles) {
                 if (vehicle is Truck) sb.Append(vehicle + "\n");
             }
             return sb.ToString();
