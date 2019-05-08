@@ -9,20 +9,8 @@ namespace Practice {
     class Program {
         static void Main(string[] args) {
 
-            var fruits = new List<string> {
-                "banana", "lemon", "mango", "melon"
-            };
-            //fruits.Remove("lemon");
-            Console.WriteLine(fruits.Count);
-            foreach (var fruit in fruits) {
-                Console.WriteLine(fruit);
-            }
+            Dictionary<string,>
 
-            List<string> fruits2 = new List<string>();
-            fruits2.Add("hello bello");
-
-
-            Console.ReadKey();
 
         }
     }
