@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DictionaryUsage", "DictionaryUsage.csproj", "{73EAA8C2-7C90-4E47-BDC0-F76DD0C827F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TraversingDirectories", "TraversingDirectories.csproj", "{3D900360-C7D7-4F4A-A99F-F10D301A9D25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{73EAA8C2-7C90-4E47-BDC0-F76DD0C827F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{73EAA8C2-7C90-4E47-BDC0-F76DD0C827F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{73EAA8C2-7C90-4E47-BDC0-F76DD0C827F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{73EAA8C2-7C90-4E47-BDC0-F76DD0C827F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D900360-C7D7-4F4A-A99F-F10D301A9D25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D900360-C7D7-4F4A-A99F-F10D301A9D25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D900360-C7D7-4F4A-A99F-F10D301A9D25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D900360-C7D7-4F4A-A99F-F10D301A9D25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {42102265-7E62-4975-9D56-0EE3D0A41EE3}
+		SolutionGuid = {EF87C85C-6996-4FC8-ABDA-24E9A325472E}
 	EndGlobalSection
 EndGlobal
