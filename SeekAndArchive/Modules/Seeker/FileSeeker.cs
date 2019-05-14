@@ -1,22 +1,65 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Net.Http.Headers;
+using System.Text;
+using SeekAndArchive.Control;
 
 
-namespace TraversingDirectories.Solutions {
 
 
-    class SearchForFile {
+
+namespace SeekAndArchive.Modules.Seeker {
 
 
-        private static int recursiveCounter = 0;
-        private static int DFScounter = 0;
+    class FileSeeker : SeekerAndArchiverEntity {
+
+        
+        public FileSeeker(FileSeekerAndArchiver controller) : base(controller) {
+            FoundFiles = new Dictionary<string, FileInfo>();
+        }
+
+
+        public Dictionary<string, FileInfo> FoundFiles {
+            get;
+        }
+
+
+        public long ElapsedTime {
+            set;
+            get;
+        }
+
+
+        public void SearchForFiles(SearchType type) {
+            var rootDir = new DirectoryInfo(controller.RootDir);
+            var pattern = controller.Pattern;
+            Stopwatch sw = Stopwatch.StartNew();
+            switch (type) {
+                case SearchType.RECURSIVE:
+                    sw.Start();
+                    RecursiveTraversing(rootDir,pattern);
+                    sw.Stop();
+                    break;
+                case SearchType.BUILTIN:
+                    sw.Start();
+                    BuiltIn(rootDir, pattern);
+                    sw.Stop();
+                    break;
+                case SearchType.DFS:
+                    sw.Start();
+                    DepthFirstSearch(rootDir, pattern);
+                    sw.Stop();
+                    break;
+            }
+            ElapsedTime = sw.ElapsedMilliseconds;
+            Console.WriteLine(this);
+
+        }
 
 
         //--------------------RECURSIVE SOLUTION-------------------
-        public void Recursive(DirectoryInfo rootDir, string pattern) {
+        private void RecursiveTraversing(DirectoryInfo rootDir, string pattern) {
 
             FileInfo[] files = null;
 
@@ -27,13 +70,12 @@ namespace TraversingDirectories.Solutions {
             } catch (DirectoryNotFoundException) {
                 Console.WriteLine("Directory not found");
             }
-
             if (files != null) {
                 foreach (var file in files) {
-                    Console.WriteLine($"{++recursiveCounter}.: {file.FullName}");
+                    FoundFiles.Add(file.FullName,file);
                 }
                 foreach (var subDir in rootDir.GetDirectories()) {
-                    Recursive(subDir,pattern);
+                    RecursiveTraversing(subDir, pattern);
                 }
             }
 
@@ -42,12 +84,9 @@ namespace TraversingDirectories.Solutions {
 
 
         //---------------BUILTIN SEARCH OPTION SOLUTION---------------
-        public void BuiltIn(DirectoryInfo rootDir, string pattern) {
-
-            var hitCounter = 0;
-
+        private void BuiltIn(DirectoryInfo rootDir, string pattern) {
             foreach (var file in rootDir.GetFiles(pattern, SearchOption.AllDirectories)) {
-                Console.WriteLine($"{++hitCounter}.: {file.FullName}");
+                FoundFiles.Add(file.FullName,file);
             }
         }
 
@@ -76,27 +115,24 @@ namespace TraversingDirectories.Solutions {
         }
 
 
-
         private void VisitDirectory(ICollection<string> visited, DirectoryInfo rootDir, string pattern) {
 
             if (visited.Contains(rootDir.FullName)) return;
-            FileInfo[] files = null;
 
             try {
-                files = rootDir.GetFiles(pattern);
+                var files = rootDir.GetFiles(pattern);
                 foreach (var file in files) {
-                    Console.WriteLine($"{++DFScounter}.: {file.FullName}");
+                    FoundFiles.Add(file.FullName, file);
                 }
             } catch (UnauthorizedAccessException exception) {
                 Console.WriteLine(exception.Message);
             }
-
             visited.Add(rootDir.FullName);
         }
 
 
 
-        public void DepthFirstSearch(DirectoryInfo rootDir, string pattern) {
+        private void DepthFirstSearch(DirectoryInfo rootDir, string pattern) {
 
             var depth = new Stack<DirectoryInfo>();
             var visited = new List<string>();
@@ -117,6 +153,33 @@ namespace TraversingDirectories.Solutions {
         }
 
 
+        public void RemoveFileFromList(string filePath) {
+            FoundFiles.Remove(filePath);
+        }
+
+
+        public void OnRename(string oldPath, string newPath) {
+            RemoveFileFromList(oldPath);
+            FoundFiles.Add(newPath, new FileInfo(newPath));
+        }
+
+
+        public override string ToString() {
+            var sb = new StringBuilder();
+            sb.Append("Files being watched:\n");
+            var fileCounter = 0;
+            foreach (var file in FoundFiles.Values) {
+                sb.Append($"\t{++fileCounter}. {file.FullName}\n");
+            }
+            sb.Append($"Search took: {ElapsedTime}ms\n\n");
+            return sb.ToString();
+        }
+
+
+
+
 
     }
+
+
 }

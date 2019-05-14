@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.352
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeekAndArchive", "SeekAndArchive.csproj", "{181A8965-5C17-4B90-B7F5-766F84DC40EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{181A8965-5C17-4B90-B7F5-766F84DC40EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{181A8965-5C17-4B90-B7F5-766F84DC40EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{181A8965-5C17-4B90-B7F5-766F84DC40EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{181A8965-5C17-4B90-B7F5-766F84DC40EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B4C5E62F-115B-4E95-A79E-45F8FB07AE54}
+	EndGlobalSection
+EndGlobal

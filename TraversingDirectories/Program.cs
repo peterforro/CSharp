@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
-using System.Threading;
 using TraversingDirectories.Solutions;
 
 
@@ -18,10 +15,12 @@ namespace TraversingDirectories {
 
         static void Main(string[] args) {
             var searchForFile = new SearchForFile();
-            searchForFile.Recursive(new DirectoryInfo(_rootDirectory), _searchPattern);
-            //searchForFile.BuiltIn(new DirectoryInfo(_rootDirectory), _searchPattern );
-            //searchForFile.DepthFirstSearch(new DirectoryInfo(_rootDirectory), _searchPattern);
+            //searchForFile.Recursive(new DirectoryInfo(args[0]), args[1]);
+            //searchForFile.BuiltIn(new DirectoryInfo(args[0]), args[1] );
+            searchForFile.DepthFirstSearch(new DirectoryInfo(args[0]), args[1]);
             Console.ReadKey();
         }
     }
+
+
 }
