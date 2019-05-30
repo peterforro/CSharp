@@ -10,7 +10,7 @@ namespace CarRace.RaceSimulator {
 
     class Race {
 
-        private readonly LinkedList<Vehicle> vehicles;
+        private readonly List<Vehicle> vehicles;
         private const int EachVehicleNumber = 10;
         private const int RaceHours = 50;
         private readonly Weather _weather;
@@ -18,7 +18,7 @@ namespace CarRace.RaceSimulator {
 
         public Race() {
             _weather = new Weather();
-            vehicles = new LinkedList<Vehicle>();
+            vehicles = new List<Vehicle>();
             for (var i = 0; i < EachVehicleNumber; ++i) {
                 vehicles.Add(new Car(this));
             }
