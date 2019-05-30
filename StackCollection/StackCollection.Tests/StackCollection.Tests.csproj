@@ -6,7 +6,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{096485B2-7666-40FB-A30E-3BC6AF1BEA02}</ProjectGuid>
+    <ProjectGuid>{77F10A97-A5DB-45D9-95C0-DB53B2A34F79}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>StackCollection.Tests</RootNamespace>
@@ -56,7 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StackCollection.csproj">
-      <Project>{664c1fde-044d-4322-a430-9cde1ef6729b}</Project>
+      <Project>{d0efadd7-6dde-411c-9094-f0544ce3b145}</Project>
       <Name>StackCollection</Name>
     </ProjectReference>
   </ItemGroup>
