@@ -177,7 +177,7 @@ namespace StackCollection.Tests
         }
         
         [Test]
-        public void Indexer_IndexerIsEqualToCount_ShouldThrowIndexOutOfRangeException()
+        public void Indexer_IndexerIsGreaterEqualToCount_ShouldThrowIndexOutOfRangeException()
         {
             int[] numbers = new int[] { 1, 2, 3 };
             var stack = new Stack<int>(numbers);
@@ -185,7 +185,7 @@ namespace StackCollection.Tests
         }
 
         [Test]
-        public void Indexer_IndexerIsLessThanZero_ShouldThrowIndexOutOfRangeException()
+        public void Indexer_IndexerIsLessEqualThanZero_ShouldThrowIndexOutOfRangeException()
         {
             int[] numbers = new int[] { 1, 2, 3 };
             var stack = new Stack<int>(numbers);
@@ -218,6 +218,37 @@ namespace StackCollection.Tests
         {
             var stack = new Stack<int>();
             Assert.Throws<InvalidOperationException>(() => { var number = stack.Pop(); });
+        }
+
+        [Test]
+        public void Remove_RemovingTheTopElementOfTheStack()
+        {
+            var stack = new Stack<string>("AAA","BBB", "CCC", "DDD");
+            var toDelete = "DDD";
+            var expected = "CCC\nBBB\nAAA";
+            stack.Remove(toDelete);
+            Assert.AreEqual(expected, stack.ToString());
+
+        }
+
+        [Test]
+        public void Remove_RemovingTheBottomElementOfTheStack()
+        {
+            var stack = new Stack<string>("AAA", "BBB", "CCC", "DDD");
+            var toDelete = "AAA";
+            var expected = "DDD\nCCC\nBBB";
+            stack.Remove(toDelete);
+            Assert.AreEqual(expected, stack.ToString());
+        }
+
+        [Test]
+        public void Remove_RemoveElementSomewhereFromTheMiddleOfTheStack()
+        {
+            var stack = new Stack<string>("AAA", "BBB", "CCC", "DDD");
+            var toDelete = "BBB";
+            var expected = "DDD\nCCC\nAAA";
+            stack.Remove(toDelete);
+            Assert.AreEqual(expected, stack.ToString());
         }
     }
 }

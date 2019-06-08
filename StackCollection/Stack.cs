@@ -111,6 +111,44 @@ namespace StackCollection
         }
 
         /// <summary>
+        /// Helper method for the Remove() method. It deletes an element from the stack, which is not at the top.
+        /// </summary>
+        /// <param name="index">the index of the element we want to delete</param>
+        private void DeleteElement(int index)
+        {
+            T[] tmp = new T[Capacity];
+            int idx = 0;
+            for(var i = 0; i < data.Length; ++i)
+            {
+                if (i == index) continue;
+                tmp[idx++] = data[i];
+            }
+            --Count;
+            data = tmp;
+        }
+
+        /// <summary>
+        /// Removes an object from the stack.
+        /// </summary>
+        /// <param name="obj">The object / item we want to delete from the stack. </param>
+        public void Remove(T obj)
+        {
+            for(var i = 0; i < data.Length; ++i)
+            {
+                if (data[i].Equals(obj) && i == Count - 1)
+                {
+                    Pop();
+                    break;
+                }
+                else if (data[i].Equals(obj))
+                {
+                    DeleteElement(i);
+                    break;
+                }
+            }
+        }
+
+        /// <summary>
         /// Return with a simple array of the Stack's content
         /// </summary>
         /// <returns>Array of the content</returns>
