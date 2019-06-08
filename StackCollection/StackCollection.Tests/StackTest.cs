@@ -74,6 +74,20 @@ namespace StackCollection.Tests
         }
 
         [Test]
+        public void Pop_PoppingStackWhileCountNotReachesZero()
+        {
+            var stack = new Stack<int>(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+            var expected = "10987654321";
+            var sb = new StringBuilder();
+            while(stack.Count != 0)
+            {
+                sb.Append($"{stack.Pop()}");
+            }
+            Assert.AreEqual(expected, sb.ToString());
+        }
+
+
+        [Test]
         public void Pop_ShouldDecrementCountValue()
         {
             var stack = new Stack<int>(2);
@@ -190,6 +204,20 @@ namespace StackCollection.Tests
                 sb.Append(element);
             }
             Assert.AreEqual(expected, sb.ToString());
+        }
+
+        [Test]
+        public void Pop_PoppingOnEmptyStack_ShouldTrhowInvalidOperationException()
+        {
+            var stack = new Stack<int>();
+            Assert.Throws<InvalidOperationException>(() => { var number = stack.Pop(); });
+        }
+
+        [Test]
+        public void Peek_PeekOnEmptyStack_ShouldReturnInvalidOperationException()
+        {
+            var stack = new Stack<int>();
+            Assert.Throws<InvalidOperationException>(() => { var number = stack.Pop(); });
         }
     }
 }

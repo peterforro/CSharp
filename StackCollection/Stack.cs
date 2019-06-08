@@ -80,6 +80,7 @@ namespace StackCollection
         /// <returns>Removes and returns the last element from the stack.</returns>
         public T Pop()
         {
+            if (Count == 0) throw new InvalidOperationException("Empty Stack!");
             var lastElement = data[Count - 1];
             data[--Count] = default;
             return lastElement;
@@ -91,6 +92,7 @@ namespace StackCollection
         /// <returns>The last element of the stack</returns>
         public T Peek()
         {
+            if (Count == 0) throw new InvalidOperationException("Empty Stack!");
             return data[Count - 1]; 
         }
 
@@ -152,7 +154,7 @@ namespace StackCollection
                     throw new IndexOutOfRangeException();
                 }
                 data[Count - index - 1] = value;
-            }
+            } 
         }
 
         /// <summary>
