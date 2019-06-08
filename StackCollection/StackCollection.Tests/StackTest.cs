@@ -185,7 +185,7 @@ namespace StackCollection.Tests
         }
 
         [Test]
-        public void Indexer_IndexerIsLessEqualThanZero_ShouldThrowIndexOutOfRangeException()
+        public void Indexer_IndexerIsLessThanZero_ShouldThrowIndexOutOfRangeException()
         {
             int[] numbers = new int[] { 1, 2, 3 };
             var stack = new Stack<int>(numbers);
