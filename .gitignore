@@ -1,6 +1,6 @@
 
-# Created by https://www.gitignore.io/api/csharp,windows,visualstudio
-# Edit at https://www.gitignore.io/?templates=csharp,windows,visualstudio
+# Created by https://www.gitignore.io/api/csharp,windows,visualstudio,visualstudiocode
+# Edit at https://www.gitignore.io/?templates=csharp,windows,visualstudio,visualstudiocode
 
 ### Csharp ###
 ## Ignore Visual Studio temporary files, build results, and
@@ -47,9 +47,10 @@ Generated\ Files/
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
 
-# NUNIT
+# NUnit
 *.VisualState.xml
 TestResult.xml
+nunit-*.xml
 
 # Build Results of an ATL Project
 [Dd]ebugPS/
@@ -190,6 +191,8 @@ PublishScripts/
 
 # NuGet Packages
 *.nupkg
+# NuGet Symbol Packages
+*.snupkg
 # The packages folder can be ignored because of Package Restore
 **/[Pp]ackages/*
 # except build/, which is used as an MSBuild target.
@@ -265,7 +268,9 @@ ServiceFabricBackup/
 *.bim.layout
 *.bim_*.settings
 *.rptproj.rsuser
-*- Backup*.rdl
+*- [Bb]ackup.rdl
+*- [Bb]ackup ([0-9]).rdl
+*- [Bb]ackup ([0-9][0-9]).rdl
 
 # Microsoft Fakes
 FakesAssemblies/
@@ -348,9 +353,21 @@ healthchecksdb
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 MigrationBackup/
 
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+
 ### Windows ###
 # Windows thumbnail cache files
 Thumbs.db
+Thumbs.db:encryptable
 ehthumbs.db
 ehthumbs_vista.db
 
@@ -390,7 +407,7 @@ $RECYCLE.BIN/
 
 # MSTest test Results
 
-# NUNIT
+# NUnit
 
 # Build Results of an ATL Project
 
@@ -447,6 +464,7 @@ $RECYCLE.BIN/
 # in these scripts will be unencrypted
 
 # NuGet Packages
+# NuGet Symbol Packages
 # The packages folder can be ignored because of Package Restore
 # except build/, which is used as an MSBuild target.
 # Uncomment if necessary however generally it will be regenerated when needed
@@ -528,4 +546,4 @@ $RECYCLE.BIN/
 
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 
-# End of https://www.gitignore.io/api/csharp,windows,visualstudio
+# End of https://www.gitignore.io/api/csharp,windows,visualstudio,visualstudiocode
