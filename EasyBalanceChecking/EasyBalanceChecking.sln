@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.352
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyBalanceChecking", "EasyBalanceChecking\EasyBalanceChecking.csproj", "{BB3DD01D-C4EE-4A15-A980-73A7C6749970}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB3DD01D-C4EE-4A15-A980-73A7C6749970}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB3DD01D-C4EE-4A15-A980-73A7C6749970}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB3DD01D-C4EE-4A15-A980-73A7C6749970}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB3DD01D-C4EE-4A15-A980-73A7C6749970}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {70111719-E707-4FC2-8C50-ADDE3F7795E8}
+	EndGlobalSection
+EndGlobal
